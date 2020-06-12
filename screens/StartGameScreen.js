@@ -4,6 +4,7 @@ import {View, Text, StyleSheet, Button, TouchableWithoutFeedback, Keyboard, Aler
 import Card from '../components/Card'
 import Colors from '../constants/colors'
 import Input from '../components/Input'
+import NumberContainer from '../components/NumberContainer'
 
 const StartGameScreen = props => {
 
@@ -23,7 +24,7 @@ const resetInputHandler = () => {
 const confirmInputHandler = () => {
   
   const chosenNumber = parseInt(enteredValue);
-  if(chosenNumber === NaN || chosenNumber <= 0 || chosenNumber > 99) {
+  if(isNaN(chosenNumber) || chosenNumber <= 0 || chosenNumber > 99) {
       Alert.alert('Invalid number!', 'Retype!', [{text: 'Okay', style: 'destructive', onPress: resetInputHandler}])
       return;
   }   
@@ -36,7 +37,15 @@ const confirmInputHandler = () => {
 let confirmedOutput;
 
 if (confirmed) {
-    confirmedOutput = <Text>Chosen Number: {selectedNumber}</Text>
+    confirmedOutput = (
+      <Card style={styles.summaryContainer}>
+        <Text>You selected</Text>
+            <NumberContainer>
+                {selectedNumber}
+            </NumberContainer>
+            <Button title='START GAME' onPress={() => props.onStartGame(selectedNumber)}/>
+      </Card>
+    );
 }
 
     return (
@@ -107,6 +116,10 @@ const styles = StyleSheet.create({
     input: {
         textAlign: 'center',
         width: 50
+    },
+    summaryContainer: {
+        marginTop: 20,
+        alignItems: 'center'
     }
 })
 
