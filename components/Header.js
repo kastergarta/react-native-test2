@@ -1,6 +1,7 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, Platform} from 'react-native';
 import TitleText from './TitleText'
+import { Colors } from 'react-native/Libraries/NewAppScreen';
 
 const Header = props => {
     return (
@@ -17,7 +18,7 @@ const styles = StyleSheet.create({
         width: '100%',
         height: 90,
         paddingTop: 36,
-        backgroundColor: '#f7287b',
+        backgroundColor: Platform.OS === 'android' ? Colors.primary : 'white',
         alignItems: 'center',
         justifyContent: 'center'
     },
