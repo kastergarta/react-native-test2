@@ -1,10 +1,11 @@
 import React, {useState} from 'react';
 import {View, Text, StyleSheet, Button, TouchableWithoutFeedback, Keyboard, Alert } from 'react-native';
 
-import Card from '../components/Card'
-import Colors from '../constants/colors'
-import Input from '../components/Input'
-import NumberContainer from '../components/NumberContainer'
+import Card from '../components/Card';
+import Colors from '../constants/colors';
+import Input from '../components/Input';
+import NumberContainer from '../components/NumberContainer';
+import BodyText from '../components/BodyText';
 
 const StartGameScreen = props => {
 
@@ -39,7 +40,7 @@ let confirmedOutput;
 if (confirmed) {
     confirmedOutput = (
       <Card style={styles.summaryContainer}>
-        <Text>You selected</Text>
+        <BodyText>You selected</BodyText>
             <NumberContainer>
                 {selectedNumber}
             </NumberContainer>
